@@ -42,7 +42,13 @@ class CanvasArt {
             this.saveButton.addEventListener("click", () => this.saveCanvas());
             this.eraserButton.addEventListener("click", () => this.handleDrawingMode("eraser"));
             this.freehandButton.addEventListener("click", () => this.handleDrawingMode("freehand"));
-            this.canvasSizeSelect.addEventListener("change", () => this.changeCanvasSize());
+            const canvas = document.getElementById("canvas");
+            const canvasSizeSelect = document.getElementById("canvasSize");
+            canvasSizeSelect.addEventListener("change", () => {
+            const selectedWidth = canvasSizeSelect.value;
+            canvas.width = selectedWidth;
+            });
+
             this.canvas.addEventListener("mousedown", () => this.startDrawing());
             this.canvas.addEventListener("mouseup", () => this.endDrawing());
             this.canvas.addEventListener("mousemove", (e) => this.draw(e));
@@ -151,10 +157,12 @@ class CanvasArt {
     clearCanvas() {
         try {
             this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+            this.addDrawingToUndoStack();
         } catch (error) {
             console.error("Error clearing canvas:", error.message);
         }
     }
+    
 
     saveCanvas() {
         try {
@@ -174,10 +182,17 @@ class CanvasArt {
             this.canvas.width = newSize;
             this.canvas.height = newSize;
             this.clearCanvas();
+            
+            // Clear and reset the undo stack with the new canvas size
+            this.undoStack = [];
+            const initialCanvasState = this.ctx.getImageData(0, 0, this.canvas.width, this.canvas.height);
+            this.undoStack.push(initialCanvasState);
         } catch (error) {
             console.error("Error changing canvas size:", error.message);
         }
     }
+    
+    
 
     draw(event) {
         try {
