@@ -9,8 +9,8 @@ class CanvasArt {
         this.eraserButton = document.getElementById("eraserButton");
         this.canvasSizeSelect = document.getElementById("canvasSize");
         this.freehandButton = document.getElementById("freehandButton");
-        this.circleButton = document.getElementById("circleButton");
-        this.rectangleButton = document.getElementById("rectangleButton");
+        this.textButton = document.getElementById("textButton");
+this.textMode = false;
         this.painting = false;
         this.erasing = false;
         this.drawingShape = false;
@@ -30,8 +30,6 @@ class CanvasArt {
         this.clearButton.addEventListener("click", () => this.clearCanvas());
         this.saveButton.addEventListener("click", () => this.saveCanvas());
         this.eraserButton.addEventListener("click", () => this.handleDrawingMode("eraser"));
-        this.circleButton.addEventListener("click", () => this.handleDrawingMode("circle"));
-        this.rectangleButton.addEventListener("click", () => this.handleDrawingMode("rectangle"));
         this.freehandButton.addEventListener("click", () => this.handleDrawingMode("freehand"));
         this.canvasSizeSelect.addEventListener("change", () => this.changeCanvasSize());
         this.canvas.addEventListener("mousedown", (e) => this.startPosition(e));
@@ -39,54 +37,49 @@ class CanvasArt {
         this.canvas.addEventListener("mousemove", (e) => this.draw(e));
         this.canvas.addEventListener("contextmenu", (e) => e.preventDefault());
         this.brushSize.addEventListener("input", () => this.updateBrushSize());
+        this.textButton.addEventListener("click", () => this.handleDrawingMode("text"));
+
     }
 
-    handleDrawingMode(mode) {
-        try {
-            switch (mode) {
-                case "freehand":
-                    this.drawingShape = false;
-                    this.erasing = false;
-                    break;
-                case "eraser":
-                    this.drawingShape = false;
-                    this.erasing = true;
-                    break;
-                case "circle":
-                    this.drawingShape = true;
-                    this.shapeType = "circle";
-                    this.erasing = false;
-                    break;
-                case "rectangle":
-                    this.drawingShape = true;
-                    this.shapeType = "rectangle";
-                    this.erasing = false;
-                    break;
-                default:
-                    throw new Error("Invalid drawing mode");
-            }
-            this.toggleButtonActive(mode);
-        } catch (error) {
-            console.error("Error handling drawing mode:", error.message);
+   // Modify the handleDrawingMode function to include text mode
+handleDrawingMode(mode) {
+    try {
+        switch (mode) {
+            case "freehand":
+                this.drawingShape = false;
+                this.erasing = false;
+                this.textMode = false; // Turn off text mode
+                this.toggleButtonActive("freehand");
+                break;
+            case "eraser":
+                this.drawingShape = false;
+                this.erasing = true;
+                this.textMode = false; // Turn off text mode
+                this.toggleButtonActive("eraser");
+                break;
+            case "text":
+                this.drawingShape = false;
+                this.erasing = false;
+                this.textMode = true; // Turn on text mode
+                this.toggleButtonActive("text");
+                break;
+            default:
+                throw new Error("Invalid drawing mode");
         }
+    } catch (error) {
+        console.error("Error handling drawing mode:", error.message);
     }
+}
+    
 
     toggleButtonActive(mode) {
         try {
             this.freehandButton.classList.remove("active");
-            this.circleButton.classList.remove("active");
-            this.rectangleButton.classList.remove("active");
             this.eraserButton.classList.remove("active");
 
             switch (mode) {
                 case "freehand":
                     this.freehandButton.classList.add("active");
-                    break;
-                case "circle":
-                    this.circleButton.classList.add("active");
-                    break;
-                case "rectangle":
-                    this.rectangleButton.classList.add("active");
                     break;
                 case "eraser":
                     this.eraserButton.classList.add("active");
@@ -148,27 +141,6 @@ class CanvasArt {
         }
     }
 
-    drawShape() {
-        if (this.drawingShape) {
-            const endX = e.clientX - this.canvas.getBoundingClientRect().left;
-            const endY = e.clientY - this.canvas.getBoundingClientRect().top;
-
-            this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-
-            if (this.shapeType === "circle") {
-                const radius = Math.sqrt(
-                    Math.pow(endX - this.startX, 2) + Math.pow(endY - this.startY, 2)
-                );
-                this.ctx.beginPath();
-                this.ctx.arc(this.startX, this.startY, radius, 0, 2 * Math.PI);
-                this.ctx.stroke();
-            } else if (this.shapeType === "rectangle") {
-                this.ctx.beginPath();
-                this.ctx.rect(this.startX, this.startY, endX - this.startX, endY - this.startY);
-                this.ctx.stroke();
-            }
-        }
-    }
 
     clearCanvas() {
         try {

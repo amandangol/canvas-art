@@ -32,7 +32,7 @@ header {
 }
 
 button {
-  padding: 10px 20px;
+  padding: 5px 20px;
   font-size: 16px;
   background-color: #007BFF;
   color: #fff;
@@ -44,6 +44,7 @@ button {
 
 button.active {
   background-color: #28a745;
+  color: #fff;
 }
 
 label {
