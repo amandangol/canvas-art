@@ -39,6 +39,8 @@ class CanvasArt {
     
     // Other methods...
 }
+```
+
 
 
 **Explanation:**
@@ -52,6 +54,7 @@ Various methods within the class handle different aspects of the application, su
 Switch statements are employed in the CanvasArt application to manage different drawing modes and button states. Here are code segments and explanations of how switch statements are used:
 
 Handling Drawing Modes
+```javascript
 
 handleDrawingMode(mode) {
     try {
@@ -72,6 +75,8 @@ handleDrawingMode(mode) {
         console.error("Error handling drawing mode:", error.message);
     }
 }
+```
+
 
 **Explanation:**
 
@@ -79,6 +84,7 @@ The handleDrawingMode method uses a switch statement to conditionally perform ac
 If an invalid mode is provided, it throws an error, which is caught and logged for error handling.
 
 Toggling Button Active State
+```javascript
 
 toggleButtonActive(mode) {
     try {
@@ -103,6 +109,7 @@ toggleButtonActive(mode) {
         console.error("Error toggling button active state:", error.message);
     }
 }
+```
 
 **Explanation:**
 
@@ -112,6 +119,7 @@ For example, when in freehand mode, the "Freehand" button becomes active by addi
 ## Try-Catch-Finally Statements
 Try-catch-finally statements are implemented in the CanvasArt application for error handling. Here's a code segment and explanation:
 
+```javascript
 
 try {
     // Code that might throw an error...
@@ -120,6 +128,7 @@ try {
 } finally {
     // Code to run regardless of success or failure...
 }
+```
 
 **Explanation:**
 
