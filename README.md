@@ -31,6 +31,7 @@ Certainly, here's a detailed walkthrough of how classes, switch statements, and 
 The core structure of the CanvasArt application is based on object-oriented programming principles. The primary class used is `CanvasArt`, which serves as the blueprint for the application's functionality. Here's how classes are utilized:
 
 
+```javascript
 class CanvasArt {
     constructor() {
         // Constructor code here...
@@ -38,6 +39,7 @@ class CanvasArt {
     
     // Other methods...
 }
+
 
 **Explanation:**
 
