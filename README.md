@@ -136,5 +136,5 @@ Try-catch blocks are used in methods like handleDrawingMode, toggleButtonActive,
 If an error occurs, the catch block is executed, and an error message is logged to the console for debugging.
 The finally block ensures that certain code runs regardless of whether an error occurred or not, providing proper cleanup and actions.
 
-**Conclusion**
+## Conclusion:
 CanvasArt is a well-structured web application that effectively incorporates classes, switch statements, and try-catch-finally statements to manage drawing modes, button states, and error conditions. This approach enhances the application's organization, user-friendliness, and robustness.

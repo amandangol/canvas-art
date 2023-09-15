@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas Art</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Canvas Art</h1>
+    </header>
+    <div class="container">
+        <div id="controls">
+            <button id="freehandButton" class="active">Freehand</button>
+            <button id="eraserButton">Eraser</button>
+            <label for="colorPicker">Color:</label>
+            <input type="color" id="colorPicker" value="#000000">
+            <label for="brushSize">Brush Size:</label>
+            <input type="range" id="brushSize" min="1" max="20" value="5">
+            <button id="clearButton">Clear</button>
+            <button id="saveButton">Save</button>
+            <label for="canvasSize">Canvas Size:</label>
+            <select id="canvasSize">
+                <option value="400">Small</option>
+                <option value="600">Medium</option>
+                <option value="800">Large</option>
+            </select>
+        </div>
+        <br>
+        <canvas id="canvas" width="400" height="400"></canvas>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
