@@ -24,12 +24,12 @@ header {
   color: white;
   text-align: center;
   padding: 20px;
-  font-size: 28px;
+  font-size: 24px;
 }
 
 .container {
-  max-width: 200vh; 
-  max-height: 100vh; 
+  max-width: 180vh; 
+  max-height: 80vh; 
   background-color: rgba(255, 255, 255, 0.9);
   border-radius: 10px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
@@ -45,10 +45,10 @@ button {
   color: white;
   border: none;
   border-radius: 5px;
-  padding: 12px 24px;
+  padding: 8px 10px;
   cursor: pointer;
   margin: 5px;
-  font-size: 18px;
+  font-size: 15px;
   transition: background-color 0.3s ease-in-out;
   border: 2px solid #e44d4d;
 }
@@ -63,7 +63,7 @@ button:hover {
 
 /* Label and input styles */
 label {
-  font-size: 18px;
+  font-size: 16px;
 }
 
 input[type="color"],
@@ -73,7 +73,7 @@ select {
   border-radius: 5px;
   padding: 10px;
   margin: 5px;
-  font-size: 16px;
+  font-size: 15px;
   width: 100px;
   background-color: rgba(255, 255, 255, 0.8);
   border: 2px solid #ccc;
@@ -85,7 +85,7 @@ input[type="range"] {
   border-radius: 5px;
   padding: 10px;
   margin: 5px;
-  font-size: 16px;
+  font-size: 15px;
   width: 100px;
   background-color: rgba(255, 255, 255, 0.8);
   border: 2px solid #ccc;
@@ -96,6 +96,7 @@ label[for="brushSize"] {
   font-size: 16px;
   margin-right: 5px;
 }
+
 
 /* Canvas styles */
 canvas {
